@@ -9,11 +9,11 @@ class AdvertisesController < ApplicationController
   end
 
   def new
-    advertise=Advertise.new
   end
 
   def create
     if advertise.save
+      current_user.advertises << advertise
       redirect_to action: :index
     else
       render :new
@@ -32,9 +32,17 @@ class AdvertisesController < ApplicationController
     end
   end
 
-  def product
-    
+  def destroy
+    if current_user.owner? advertise
+      advertise.destroy
+      render action: :index
+    else
+      redirect_to :back
     end
+  end
+
+  def product
+  end
 
   private
 
