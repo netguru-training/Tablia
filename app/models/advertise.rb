@@ -2,10 +2,11 @@ class Advertise
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  mount_uploader :product, ProductUploader
+  mount_uploader :photo, ProductUploader
 
   field :title, type: String
   field :body, type: String
+  
 
   belongs_to  :user
   belongs_to  :category
