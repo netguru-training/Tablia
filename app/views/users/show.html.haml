@@ -10,4 +10,5 @@
       See list of your advertises (#{advertises.count}):
     .advertises-list-wrapper
       %ul.list-group
-        = render advertises
+        - advertises.each do |a|
+          = render 'advertise', ad: a
