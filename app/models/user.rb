@@ -5,6 +5,10 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Custom fields - currently only names
+  field :first_name,         type: String
+  field :last_name,          type: String
+
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
@@ -39,6 +43,10 @@ class User
   def to_key
     key = respond_to?(:id) && id.to_s
     key ? [key] : nil
+  end
+
+  def name
+    "#{self.first_name} #{self.last_name}"
   end
 
 end
