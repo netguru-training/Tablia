@@ -5,5 +5,5 @@ class Advertise
   field :title, type: String
   field :body, type: String
 
-  belongs_to: User
+  belongs_to  :user
 end
