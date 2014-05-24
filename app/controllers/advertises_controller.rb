@@ -1,4 +1,4 @@
-class AdvertiseController < ApplicationController
+class AdvertisesController < ApplicationController
   expose(:advertises) { Advertise.all }
   expose(:advertise, attributes: :advertise_params)
 
