@@ -10,11 +10,9 @@
     .navbar-collapse.collapse
       %ul.nav.navbar-nav.navbar-right
         %li
-          %a{href: "#"} Sth
-        %li.active
-          %a{href: "#"} Sth else
-        %li
-          %a{href: "#"} Even sth else
+          = link_to 'Advertises', advertises_path()
+        %li  
+          = link_to 'Categories', categories_path()
         - if user_signed_in?
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}

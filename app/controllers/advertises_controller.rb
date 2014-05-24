@@ -1,6 +1,7 @@
 class AdvertisesController < ApplicationController
   expose(:advertises) { Advertise.all }
   expose(:advertise, attributes: :advertise_params)
+  before_filter :owner_of_the_advertise, only: [:edit, :update, :destroy]
 
   def index
   end
@@ -46,8 +47,12 @@ class AdvertisesController < ApplicationController
 
   private
 
-  def advertise_params
-    params.require(:advertise).permit(:title, :body, :photo )
-  end
+    def advertise_params
+      params.require(:advertise).permit(:title, :body, :photo )
+    end
+
+    def owner_of_the_advertise
+      redirect_to :root unless current_user == advertise.user
+    end
 
 end

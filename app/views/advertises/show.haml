@@ -1,5 +1,6 @@
 %h2 
   = render advertise
-%small 
-  = link_to 'Edit', edit_advertise_path(advertise)
-  = link_to 'Delete', advertise_path(advertise), method: :delete
+- if owner_of_the_advertise?
+  %small 
+    = link_to 'Edit', edit_advertise_path(advertise)
+    = link_to 'Delete', advertise_path(advertise), method: :delete
