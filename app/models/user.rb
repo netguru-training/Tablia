@@ -34,4 +34,11 @@ class User
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+
+  # Hardcoded hack for mongoid object ids with devise
+  def to_key
+    key = respond_to?(:id) && id.to_s
+    key ? [key] : nil
+  end
+
 end
