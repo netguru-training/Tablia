@@ -2,7 +2,4 @@
   Advertises:
 
 %ol
-  - advertises.each do |advertise|
-    %li
-      = link_to advertise.title, advertise_path(advertise)
-      = advertise.body
+  = render advertises
