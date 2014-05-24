@@ -11,6 +11,14 @@ class AdvertisesController < ApplicationController
   def new
   end
 
+  def create
+    if advertise.save
+      redirect_to action: :index
+    else
+      render :new
+    end
+  end
+
   private
 
   def advertise_params

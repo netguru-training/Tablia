@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!, except: [:home]
 
+  decent_configuration do
+    strategy DecentExposure::StrongParametersStrategy
+  end
+  
   def home
     
   end

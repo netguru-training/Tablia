@@ -1,6 +1,14 @@
 .row
-  .col-md-12
+  .col-md-4
     %h3
-      Witaj, temporary_name :)
+      Hello, temporary_name :)
     %h5
-      Twój adres e-mail: #{user.email}
+      Your e-mail address is: #{user.email}
+
+  .col-md-8
+    %h3
+      See list of your advertises (#{advertises.count}):
+    .advertises-list-wrapper
+      %ul.list-group
+        - advertises.each do |a|
+          = render 'advertise', ad: a
