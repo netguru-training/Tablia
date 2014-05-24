@@ -3,11 +3,15 @@ class User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
   # Custom fields - currently only names
   field :first_name,         type: String
   field :last_name,          type: String
+
+  # Fields for omniauthorization to Google
+  field :provider,           type: String
+  field :uid,                type: String
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -51,6 +55,21 @@ class User
 
   def owner? advertise
     advertises.include? advertise
+  end
+
+  def self.from_omniauth(auth)
+    if user = User.find_by_email(auth.info.email)
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user
+    else
+      where(auth.slice(:provider, :uid)).first_or_create do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.first_name = auth.info.name # how to use name in place of first_name/last_name?
+        user.email = auth.info.email
+      end
+    end
   end
 
 end
