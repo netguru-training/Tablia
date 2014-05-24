@@ -2,6 +2,8 @@ class Advertise
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  mount_uploader :product, ProductUploader
+
   field :title, type: String
   field :body, type: String
 

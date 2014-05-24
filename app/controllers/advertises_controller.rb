@@ -19,6 +19,10 @@ class AdvertisesController < ApplicationController
     end
   end
 
+  def product
+    
+    end
+
   private
 
   def advertise_params
