@@ -9,11 +9,24 @@ class AdvertisesController < ApplicationController
   end
 
   def new
+    advertise=Advertise.new
   end
 
   def create
     if advertise.save
       redirect_to action: :index
+    else
+      render :new
+    end
+  end
+
+  def edit
+    redirect_to :back unless current_user.owner? advertise
+  end
+
+  def update
+    if advertise.save
+      render action: :index
     else
       render :new
     end
