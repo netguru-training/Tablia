@@ -6,12 +6,13 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:home]
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  expose(:categories) { Category.all }
+
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
   end
-  
+
   def home
-    
   end
 
   protected
