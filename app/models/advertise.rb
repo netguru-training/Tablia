@@ -3,12 +3,12 @@ class Advertise
   include Mongoid::Timestamps
 
   validates_presence_of :title, :body
-  
+
   mount_uploader :photo, ProductUploader
 
   field :title, type: String
   field :body, type: String
-  
+
 
   belongs_to  :user
   belongs_to  :category
@@ -22,9 +22,9 @@ class Advertise
     where(created_at: 3.days.ago..Time.now)
   }
 
-  scope :by_user, -> (user_name) {
-    joins(:users).where(user: { name: user_name })
-  }
+  #scope :by_user, -> (user_name) {
+  #  includes(:user).where(user: { first_name: user_name }).or.where(user: { last_name: user_name })
+  #}
 
   scope :by_title, -> (title) {
     where(title: title)

@@ -41,6 +41,7 @@ gem 'i18n-js'
 gem 'haml_coffee_assets'
 gem 'execjs'
 gem 'kaminari'
+gem 'searchlight'
 
 group :test do
   gem 'simplecov', '~> 0.7.1', require: false
