@@ -49,4 +49,8 @@ class User
     "#{self.first_name} #{self.last_name}"
   end
 
+  def owner? advertise
+    advertises.include? advertise
+  end
+
 end
