@@ -7,25 +7,25 @@ class Advertise
 
   belongs_to  :user
 
-  index({ user: 1 }, { unique: true, name: "user_index" }
-  index({ title: 1 }, { unique: false, name: "title_index" }
-  index({ body: 1 }, {unique: true, name: "body_index" }
-  index({ created_at: 1 }, { unique: false, name: "created_at" }
+  index({ user: 1 }, { unique: true, name: "user_index" })
+  index({ title: 1 }, { unique: false, name: "title_index" })
+  index({ body: 1 }, {unique: true, name: "body_index" })
+  index({ created_at: 1 }, { unique: false, name: "created_at" })
 
-  scope :recent -> {
-    where(created_at: 3.days.ago..Time.now)
-  }
+  #scope :recent -> {
+  #  where(created_at: 3.days.ago..Time.now)
+  #}
 
-  scope :by_user, -> (user_name) {
-    joins(:users).where(user: { name: user_name })
-  }
+  #scope :by_user, -> (user_name) {
+  #  joins(:users).where(user: { name: user_name })
+  #}
 
-  scope :by_title, -> (title) {
-    where(title: title)
-  }
+  #scope :by_title, -> (title) {
+  #  where(title: title)
+  #}
 
-  scope :by_phrase, -> (text) {
-    where(body: /%{text}/)
-  }
+  #scope :by_phrase, -> (text) {
+  #  where(body: /%{text}/)
+  # }
 
 end
