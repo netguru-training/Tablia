@@ -2,10 +2,16 @@ class Advertise
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  validates_presence_of :title, :body
+  
+  mount_uploader :photo, ProductUploader
+
   field :title, type: String
   field :body, type: String
+  
 
   belongs_to  :user
+  belongs_to  :category
 
   index({ user: 1 }, { unique: true, name: "user_index" })
   index({ title: 1 }, { unique: false, name: "title_index" })

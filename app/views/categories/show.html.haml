@@ -1,0 +1,7 @@
+%h2= category.name
+
+- category.advertises.each do |advertise|
+  %ul
+    %li
+      %h3= advertise.title
+      %h4= advertise.body
