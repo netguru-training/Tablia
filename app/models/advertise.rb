@@ -8,6 +8,7 @@ class Advertise
   field :body, type: String
 
   belongs_to  :user
+  belongs_to  :category
 
   index({ user: 1 }, { unique: true, name: "user_index" })
   index({ title: 1 }, { unique: false, name: "title_index" })
