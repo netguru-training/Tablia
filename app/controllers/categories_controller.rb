@@ -21,7 +21,11 @@ class CategoriesController < ApplicationController
   end
 
   def update
-
+    if category.update
+      redirect_to action: :index
+    else
+      render :edit
+    end
   end
 
   def delete
