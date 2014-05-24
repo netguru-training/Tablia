@@ -1,3 +1,8 @@
 - categories.each do |category|
   %ul
     %li= link_to category.name, category_path(category)
+    %i.= category.icon_class
+    / %i.#{category.icon_class}
+
+    %i.fa.fa-camera-icon
+
