@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :users
-  resources :advertises
 
   # Example resource route with options:
   #   resources :products do
