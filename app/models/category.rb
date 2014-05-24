@@ -5,6 +5,7 @@ class Category
   validates_presence_of :name
 
   field :name, type: String
+  field :icon_class, type: String
 
   has_many :advertises
 end
