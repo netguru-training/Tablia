@@ -47,7 +47,7 @@ class AdvertisesController < ApplicationController
   private
 
   def advertise_params
-    params.require(:advertise).permit(:title, :body )
+    params.require(:advertise).permit(:title, :body, :photo )
   end
 
 end

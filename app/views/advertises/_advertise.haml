@@ -1,4 +1,5 @@
 %h2
   = link_to advertise.title, advertise_path(advertise)
 %small
-  = advertise.body
+= image_tag advertise.photo.url
+= advertise.body
