@@ -1,5 +1,9 @@
 class CategoriesController < ApplicationController
+  expose(:categories) {Category.all}
+  expose(:category, attributes: :category_params)
+
   def new
+
   end
 
   def show
@@ -13,4 +17,9 @@ class CategoriesController < ApplicationController
 
   def delete
   end
+
+  def category_params
+    params.require(:category).permit(:name)
+  end
+
 end
