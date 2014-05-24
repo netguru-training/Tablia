@@ -1,13 +1,11 @@
 .row
   .col-md-4
     %h3
-      Hello, #{user.name} :)
-    %h5
-      Your e-mail address is: #{user.email}
+      User: #{user.name}
 
   .col-md-8
     %h3
-      See list of your advertises (#{advertises.count}):
+      See list of advertises from #{user.name} (#{advertises.count}):
     .advertises-list-wrapper
       %ul.list-group
         - advertises.each do |a|
