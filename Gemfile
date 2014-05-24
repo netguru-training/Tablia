@@ -26,9 +26,6 @@ gem 'enumerize'
 gem 'mongoid_search', github: 'mauriciozaffari/mongoid_search', branch: 'master'
 gem 'searchlight'
 
-gem 'rails_admin_invite', git: 'git@github.com:tonywok/rails_admin_invite.git'
-gem 'rails_admin'
-
 gem 'carrierwave'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 
