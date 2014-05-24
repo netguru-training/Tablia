@@ -13,10 +13,21 @@ class CategoriesController < ApplicationController
   end
 
   def create
+    if category.save
+      redirect_to action: :index
+    else
+      render :new
+    end
+  end
+
+  def update
+
   end
 
   def delete
   end
+
+  private
 
   def category_params
     params.require(:category).permit(:name)
