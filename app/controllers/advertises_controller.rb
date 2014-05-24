@@ -4,6 +4,7 @@ class AdvertisesController < ApplicationController
   before_filter :owner_of_the_advertise, only: [:edit, :update, :destroy]
 
   def index
+    #read params
   end
 
   def show
@@ -48,7 +49,7 @@ class AdvertisesController < ApplicationController
   private
 
     def advertise_params
-      params.require(:advertise).permit(:title, :body, :photo )
+      params.require(:advertise).permit(:title, :body, :photo)
     end
 
     def owner_of_the_advertise
