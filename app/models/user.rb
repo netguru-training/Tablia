@@ -9,6 +9,8 @@ class User
   field :first_name,         type: String
   field :last_name,          type: String
 
+  mount_uploader :avatar, AvatarUploader
+
   # Fields for omniauthorization to Google
   field :provider,           type: String
   field :uid,                type: String

@@ -1,7 +1,12 @@
 .row
   .col-md-4
     %h3
-      User: #{user.name}
+      #{user.name}
+      - if is_user_current_user?(user)
+        %span.small_link
+          = link_to "Edit", edit_user_registration_path
+    .image-wrapper
+      = image_tag user.avatar.url(:medium)
 
   .col-md-8
     %h3
