@@ -1,7 +1,8 @@
-%h2 
-  = render advertise
-- if owner_of_the_advertise?
-  %button.btn.btn-default{type: "button"}
-    = link_to 'Edit', edit_advertise_path(advertise)
-  %button.btn.btn-default{type: "button"}  
-    = link_to 'Delete', advertise_path(advertise), method: :delete
+= render advertise
+.row
+  .col-md-16
+    - if owner_of_the_advertise?
+      %button.btn.btn-default{type: "button"}
+        = link_to 'Edit', edit_advertise_path(advertise)
+      %button.btn.btn-default{type: "button"}  
+        = link_to 'Delete', advertise_path(advertise), method: :delete
