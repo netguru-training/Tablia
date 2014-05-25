@@ -1,3 +1,4 @@
+
 class User
   include Mongoid::Document
   # Include default devise modules. Others available are:
@@ -8,6 +9,7 @@ class User
   # Custom fields - currently only names
   field :first_name,         type: String
   field :last_name,          type: String
+  field :admin,              type: Boolean, default: false
 
   mount_uploader :avatar, AvatarUploader
 
