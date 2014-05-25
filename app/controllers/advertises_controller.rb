@@ -54,6 +54,7 @@ class AdvertisesController < ApplicationController
     user = advertise.user
     MessageMailer.send_message_to_user_about_ad(user, advertise, current_user, message_params[:body]).deliver
     redirect_to advertise
+  end
 
   protected
 
