@@ -13,6 +13,23 @@ describe CategoriesController do
       request.env['warden'].stub authenticate!: user
       controller.stub current_user: user
     end
+
+    describe 'POST create' do
+      let!(:temporary_category) { FactoryGirl.build(:category) }
+      
+      it 'should create new category' do
+        expect { post :create, category: temporary_category.attributes }.to change(Category, :count).by(1)
+      end
+    end
+
+    describe 'PATCH update' do
+      before { category_one.name = 'Changed title' }
+
+      it 'should change title of category' do
+        patch :update, id: category_one.id, category: category_one.attributes
+        expect(controller.category.name).to eq('Changed title')
+      end
+    end
   end
 
   context 'for unsigned users' do
