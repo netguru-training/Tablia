@@ -2,6 +2,8 @@ class CategoriesController < ApplicationController
   expose(:categories) {Category.all}
   expose(:category, attributes: :category_params)
 
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   def new
 
   end
@@ -28,7 +30,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
   end
 
   private
