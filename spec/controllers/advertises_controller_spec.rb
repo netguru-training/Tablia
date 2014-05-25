@@ -11,7 +11,13 @@ describe AdvertisesController do
       controller.stub current_user: user
     end
 
-    
+    describe 'POST create' do
+      let!(:temporary_advertise) { FactoryGirl.build(:advertise, user: user) }
+      
+      it 'should create new advertise for current user' do
+        expect { post :create, advertise: temporary_advertise.attributes }.to change(user.advertises, :count).by(1)
+      end
+    end
   end
 
   context 'for unsigned user' do
@@ -21,6 +27,8 @@ describe AdvertisesController do
         controller.should redirect_to(new_user_session_path)
       end
     end
+
+    # is there any need to test other actions if they use same before_action?
   end
 
   context 'for both' do
