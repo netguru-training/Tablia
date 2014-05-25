@@ -64,3 +64,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'binding_of_caller'
 end
+
+group :production do
+  gem 'rollbar'
+end

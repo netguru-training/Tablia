@@ -247,6 +247,8 @@ GEM
       json (~> 1.4)
     remotipart (1.2.1)
     request_store (1.0.5)
+    rollbar (0.12.17)
+      multi_json (~> 1.3)
     rspec-core (2.14.8)
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -346,6 +348,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.1.1)
   rails_admin
+  rollbar
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
