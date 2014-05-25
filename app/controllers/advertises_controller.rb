@@ -60,7 +60,7 @@ class AdvertisesController < ApplicationController
   protected
 
   def search_results
-    params[:query][:by_phrase] =  params[:query][:title]
+    params[:query][:by_phrase] = params[:query][:title] if params[:query]
     params[:query] || {}
   end
 
