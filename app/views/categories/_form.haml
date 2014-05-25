@@ -4,12 +4,12 @@
   = f.button :submit
 
 %br
+%i#icon_display
 .btn-group
-  %i#icon_display
   %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
     Choose Icon
     %span.caret
   %ul#icon-selector.dropdown-menu
-    - @icons.each do |x|
+    - icons.each do |x|
       %li.category-icon
-        %a= content_tag(:i, '', class: "fa #{x}", data: { name: "fa #{x}" })
+        %a= content_tag(:i, '', class: "#{x}", data: { name: "#{x}" })

@@ -4,10 +4,10 @@ class Category
 
   validates_presence_of :name
 
-  ALLOWED_CLASSES = %w(fa-car fa-2 fa-child fa-2 fa-paw fa-2
-              fa-paper-plane fa-2 fa-image-ao fa-2 fa-space-shuttle fa-2
-              fa-camera fa-2 fa-cogs fa-2 fa-desktop fa-2
-              fa-female fa-2 fa-glass fa-2 fa-heart fa-2)
+  ALLOWED_CLASSES = ['fa fa-car', 'fa fa-child', 'fa fa-paw',
+              'fa fa-paper-plane', 'fa fa-flask', 'fa fa-space-shuttle',
+              'fa fa-camera', 'fa fa-cogs', 'fa fa-desktop',
+              'fa fa-female', 'fa fa-glass', 'fa fa-heart']
 
   field :name, type: String
   field :icon_class, type: String, default: 'default'
