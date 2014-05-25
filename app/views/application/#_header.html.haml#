@@ -28,8 +28,3 @@
         - else
           %li
             = link_to 'Log in', new_user_session_path
-        %li
-          = simple_form_for :query, url: advertises_path, method: :get, html: { class: 'navbar-form navbar-left' } do |f|
-            .form-group
-              = f.text_field :title, class: 'search-input' 
-            = f.submit "Search", class: 'btn btn-default btn-narrow'
