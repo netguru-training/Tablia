@@ -6,6 +6,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [125, 125]
   end
 
+  def default_url
+    ActionController::Base.helpers.asset_path("fallback/default_avatar.jpeg")
+  end
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
