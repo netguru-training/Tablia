@@ -18,10 +18,6 @@ class AdvertisesController < ApplicationController
   end
 
   def create
-    r=Random.rand(0..100)
-    if true
-      advertise.sponsored=true
-    end
     if advertise.save
       current_user.advertises << advertise
       redirect_to action: :index

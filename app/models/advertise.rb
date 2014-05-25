@@ -3,7 +3,7 @@ class Advertise
   include Mongoid::Timestamps
 
   validates_presence_of :title, :body
-
+  before_save :rand_sponsored
   mount_uploader :photo, ProductUploader
 
   field :title, type: String
@@ -33,5 +33,14 @@ class Advertise
   scope :by_phrase, -> (text) {
     any_of({ :body => Regexp.new(".*#{text}.*", Regexp::IGNORECASE) })
   }
+
+  private
+
+  def rand_sponsored
+    r=Random.rand(0..100)
+    if r>70
+      sponsored=true
+    end
+  end
 
 end
