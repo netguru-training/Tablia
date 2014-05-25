@@ -25,5 +25,12 @@ describe AdvertisesController do
         controller.advertises.count eq 2
       end
     end
+
+    describe 'GET show' do
+      it "exposes exact advertise" do
+        get :show, id: advertise_one.id
+        controller.advertise.should eq advertise_one
+      end
+    end
   end
 end
