@@ -27,11 +27,11 @@ class Advertise
   #}
 
   scope :by_title, -> (title) {
-    any_of({ :title => Regexp.new(".*#{title}.*") })
+    any_of({ :title => Regexp.new(".*#{title}.*", Regexp::IGNORECASE) })
   }
 
   scope :by_phrase, -> (text) {
-    any_of({ :body => Regexp.new(".*#{text}.*") })
+    any_of({ :body => Regexp.new(".*#{text}.*", Regexp::IGNORECASE) })
   }
 
 end
