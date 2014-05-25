@@ -49,7 +49,6 @@ class AdvertisesController < ApplicationController
   def send_email_to_user
     advertise = Advertise.find params[:id]
     user = advertise.user
-    binding.pry
     MessageMailer.send_message_to_user_about_ad(user, advertise, current_user, message_params[:body]).deliver
     redirect_to advertise
   end
