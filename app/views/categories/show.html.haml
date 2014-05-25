@@ -6,16 +6,18 @@
     %ul.list-group
       = render 'advertises'
 
-.row
-  .col-md-6.col-md-offset-3
-    = link_to edit_category_path(category) do
-      %button.btn.btn-default.btn-block{type: "button"}
-        Edit
-        
+- if current_user.try(:admin?)
 
-.row
-  .col-md-6.col-md-offset-3
-    = link_to new_category_path do
-      %button.btn.btn-default.btn-block{type: "button"}
-        New
+  .row
+    .col-md-6.col-md-offset-3
+      = link_to edit_category_path(category) do
+        %button.btn.btn-default.btn-block{type: "button"}
+          Edit
+          
+
+  .row
+    .col-md-6.col-md-offset-3
+      = link_to new_category_path do
+        %button.btn.btn-default.btn-block{type: "button"}
+          New
         
