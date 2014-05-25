@@ -46,6 +46,12 @@ class AdvertisesController < ApplicationController
   def product
   end
 
+  def send_email_to_user
+    user = advertise.user
+    MessageMailer.send_message_to_user_about_ad(user, advertise)
+    redirect_to advertise
+  end
+
   private
 
     def advertise_params
