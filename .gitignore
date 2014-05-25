@@ -11,8 +11,6 @@ public/tmp
 public/uploads
 public/javascripts/translations.js
 
-config/secrets.yml
-
 .rbenv-gemsets
 .rbenv-version
 .powenv
