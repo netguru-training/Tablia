@@ -10,6 +10,11 @@
     .navbar-collapse.collapse
       %ul.nav.navbar-nav.navbar-right
         %li
+          = simple_form_for :query, url: advertises_path, method: :get, html: { class: 'navbar-form navbar-left' } do |f|
+            .form-group
+              = f.text_field :title, html: { placeholder: "title" } 
+            = f.submit "Search", class: 'btn btn-default'
+        %li
           = link_to 'Advertises', advertises_path()
         %li  
           = link_to 'Categories', categories_path()
