@@ -1,5 +1,5 @@
-- categories.each do |category|
-  %ul.list-group
+%ul.list-group
+  - categories.each do |category|
     = link_to category_path(category) do
       %li.list-group-item 
         = category.name
