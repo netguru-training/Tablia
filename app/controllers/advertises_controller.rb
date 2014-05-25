@@ -1,9 +1,8 @@
 class AdvertisesController < ApplicationController
-  expose(:advertises) { AdvertiseSearch.new(search).results }
+  expose_decorated(:advertises) { AdvertiseSearch.new(search).results }
   expose_decorated(:advertise, attributes: :advertise_params)
   expose(:search) { search_results }
   expose(:category_id) {advertise.category.present? ? advertise.category.id : nil}
-  expose(:category_name) {advertise.category.present? ? advertise.category.name : nil}
 
   before_action :owner_of_the_advertise, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :send_email_to_user]

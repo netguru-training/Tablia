@@ -8,8 +8,10 @@
             %br
               %strong
                 Category:
-              = category_name
-            = advertise.created_at
+              = advertise.category_name
+            %strong
+              Created at:
+            = advertise.friendly_date
     .row
       .col-md-12
         .row
