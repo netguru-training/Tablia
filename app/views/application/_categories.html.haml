@@ -1,6 +1,12 @@
-%ul.list-group
-  - categories.each do |category|
-    = link_to category_path(category) do
-      %li.list-group-item 
-        = category.name
-        = content_tag( :i, '', class: "fa #{category.icon_class}" )
+.row
+  .col-md-12
+    %ul.list-group
+      - categories.each do |category|
+        %br
+        = link_to category_path(category) do
+          %li.list-group-item
+            .row
+              .col-md-1
+                = content_tag( :i, '', class: "#{category.icon_class}", id: "category-icon" )
+              .col-md-10
+                = category.name
