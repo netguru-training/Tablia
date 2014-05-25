@@ -3,7 +3,7 @@
     .row
       .col-md-6
         %h3.advertise-title
-          #{advertise.title} 
+          = link_to "#{advertise.title}", advertise_path(advertise)
           %small
             (#{advertise.friendly_date})
         %p
