@@ -1,8 +1,11 @@
 - category.advertises.each do |advertise|
-  .title
-    = link_to advertise.title, advertise_path(advertise)
-  .row.well
-    .col-md-4
-      = image_tag advertise.photo.url(:medium), class: 'img-thumbnail'
-    .col-md-8.well
-      = advertise.body
+  .row
+    .col-md-12
+      .well
+        .row
+          .col-md-2
+            = image_tag advertise.photo.url(:medium), class: 'img-thumbnail'
+          .col-md-10
+            %h4
+              = link_to advertise.title, advertise_path(advertise)
+            = advertise.body
