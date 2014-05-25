@@ -1,10 +1,12 @@
 class AdvertisesController < ApplicationController
-  expose(:advertises) { Advertise.all }
+  expose(:advertises) { AdvertiseSearch.new(search).results }
   expose(:advertise, attributes: :advertise_params)
+  expose(:search) { search_results }
   before_filter :owner_of_the_advertise, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: :index
+
 
   def index
-    #read params
   end
 
   def show
@@ -51,6 +53,11 @@ class AdvertisesController < ApplicationController
     user = advertise.user
     MessageMailer.send_message_to_user_about_ad(user, advertise, current_user, message_params[:body]).deliver
     redirect_to advertise
+
+  protected
+
+  def search_results
+    params[:query] || {}
   end
 
   private
