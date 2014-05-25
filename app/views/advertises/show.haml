@@ -2,9 +2,9 @@
 .row
   .col-md-12
     - if owner_of_the_advertise?
-      %button.btn.btn-default{type: "button"}
+      .button.btn.btn-default{type: "button"}
         = link_to 'Edit', edit_advertise_path(advertise)
-      %button.btn.btn-default{type: "button"}  
+      .button.btn.btn-default{type: "button"}  
         = link_to 'Delete', advertise_path(advertise), method: :delete
 
 .row

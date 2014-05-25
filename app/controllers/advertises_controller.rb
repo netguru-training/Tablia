@@ -23,7 +23,7 @@ class AdvertisesController < ApplicationController
   end
 
   def edit
-    redirect_to :back unless current_user.owner? advertise
+    #redirect_to :back unless current_user.owner? advertise
   end
 
   def update

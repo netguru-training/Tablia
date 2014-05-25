@@ -1,5 +1,15 @@
-%h2
-  Advertises:
-  = link_to "New", new_advertise_path
-%ol
-  = render advertises
+.row
+  .col-md-2
+    %h1
+      .small
+        Advertises:
+.row
+  .col-md-2
+    %button.btn.btn-default.btn-block{type: "button"}
+      .title
+        = link_to "New", new_advertise_path
+%br
+.row
+  .col-md-12
+    %ol
+      = render advertises
