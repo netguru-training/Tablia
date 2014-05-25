@@ -1,6 +1,6 @@
 class AdvertisesController < ApplicationController
   expose(:advertises) { AdvertiseSearch.new(search).results }
-  expose(:advertise, attributes: :advertise_params)
+  expose_decorated(:advertise, attributes: :advertise_params)
   expose(:search) { search_results }
   expose(:category_id) {advertise.category.present? ? advertise.category.id : nil}
 

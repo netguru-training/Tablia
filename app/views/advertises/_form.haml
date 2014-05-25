@@ -1,6 +1,11 @@
-= simple_form_for advertise, :defaults => { :wrapper_html => {:class => 'form-horizontal'} } do |f|
-  = f.input :title
-  = f.input :body, as: :text, input_html: { cols: 50, rows: 3 }
-  = f.input :photo, as: :file
-  = f.input :category_id, collection: categories_list, selected: category_id  , input_html: { class: 'chosen-select' }
-  = f.button :submit, 'Post advertise' 
+.row.well
+  = simple_form_for advertise, :defaults => { :wrapper_html => {:class => 'form-horizontal'} } do |f|
+    = f.input :title
+    = f.input :body, as: :text, input_html: { cols: 50, rows: 3 }
+    .row
+      .col-md-2
+        = image_tag advertise.photo.url(:medium), class: 'img-thumbnail'
+      .col-md-10
+        = f.input :photo, as: :file
+    = f.input :category_id, collection: categories_list, selected: category_id  , input_html: { class: 'chosen-select' }
+    = f.button :submit, 'Post advertise' 

@@ -1,5 +1,7 @@
-.title
+.row
   = link_to advertise.title, advertise_path(advertise)
+  .small
+    = 123
 .row.well
   .col-md-4
     = image_tag advertise.photo.url(:medium), class: 'img-thumbnail'
