@@ -15,7 +15,12 @@ describe AdvertisesController do
   end
 
   context 'for unsigned user' do
-
+    describe 'GET new' do
+      it 'redirects to sign_in' do
+        get :new
+        controller.should redirect_to(new_user_session_path)
+      end
+    end
   end
 
   context 'for both' do
