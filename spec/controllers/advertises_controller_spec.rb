@@ -18,6 +18,28 @@ describe AdvertisesController do
         expect { post :create, advertise: temporary_advertise.attributes }.to change(user.advertises, :count).by(1)
       end
     end
+
+    describe 'PATCH update' do
+      before { advertise_one.title = 'Changed title' }
+
+      it 'should change title of advertise' do
+        patch :update, id: advertise_one.id, advertise: advertise_one.attributes
+        controller.advertise.title.should eq 'Changed title'
+      end
+    end
+
+    describe 'DELETE destroy' do
+      let!(:other_user) { create(:user) }
+      let!(:other_user_advertise) { create(:advertise, user: other_user) }
+
+      it 'is possible only for your own advertise' do
+        expect { delete :destroy, id: advertise_one.id }.to change(Advertise, :count).by(-1)
+      end
+
+      it 'is not possible for other advertises' do
+        expect { delete :destroy, id: other_user_advertise.id }.to_not change(Advertise, :count)
+      end
+    end
   end
 
   context 'for unsigned user' do
