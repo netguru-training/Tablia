@@ -6,6 +6,11 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
+  # Validations
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :admin, presence: true
+
   # Custom fields - currently only names
   field :first_name,         type: String
   field :last_name,          type: String
