@@ -27,7 +27,7 @@ class Advertise
   #}
 
   scope :by_title, -> (title) {
-    where(title: title)
+    any_of({ :title => Regexp.new(".*#{title}.*") })
   }
 
   scope :by_phrase, -> (text) {
