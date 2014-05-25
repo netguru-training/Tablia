@@ -36,6 +36,7 @@ gem 'devise'
 gem 'devise-async'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'rails_admin'
 
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
