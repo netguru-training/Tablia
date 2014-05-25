@@ -1,19 +1,19 @@
 %h2= category.name
-
-.row
-  .col-md-2
-    %button.btn.btn-default.btn-block{type: "button"}
-      .title
-        = link_to "Edit", edit_category_path(category)
-
-.row
-  .col-md-2
-    %button.btn.btn-default.btn-block{type: "button"}
-      .title
-        = link_to "New", new_category_path
-
-%br
 .row
   .col-md-12
-    %ol
+    %ul.list-group
       = render 'advertises'
+
+.row
+  .col-md-6.col-md-offset-3
+    = link_to edit_category_path(category) do
+      %button.btn.btn-default.btn-block{type: "button"}
+        Edit
+        
+
+.row
+  .col-md-6.col-md-offset-3
+    = link_to new_category_path do
+      %button.btn.btn-default.btn-block{type: "button"}
+        New
+        
