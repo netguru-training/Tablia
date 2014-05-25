@@ -2,8 +2,9 @@ class AdvertisesController < ApplicationController
   expose(:advertises) { AdvertiseSearch.new(search).results }
   expose(:advertise, attributes: :advertise_params)
   expose(:search) { search_results }
-  before_filter :owner_of_the_advertise, only: [:edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: :index
+  
+  before_action :owner_of_the_advertise, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :send_email_to_user]
 
 
   def index
