@@ -4,3 +4,22 @@
   a:hover {text-decoration:none;}
   a:active {text-decoration:none;}
 }
+
+.center {
+  text-align: center;
+}
+
+.log-in-mail-message {
+  border-top: 1px solid gray;
+  padding-top: 5px;
+}
+
+.email_hash {
+  padding-top: 10px;
+  border-top: 1px solid gray;
+  margin-top: 10px;
+}
+
+.email_hash>.form_group>label {
+  font-size: 0.9em;
+}

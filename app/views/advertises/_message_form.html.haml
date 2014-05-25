@@ -1,5 +1,5 @@
 = simple_form_for(:email_hash, :url => send_email_to_user_advertise_path) do |f|
   .form-group
     %label{for: "message-body"} Your message
-    = f.input :body, required: true
-    = f.button :submit, "Sign up"
+    = f.input :body, required: true, label: false, as: :text
+    = f.button :submit, "Send message"

@@ -12,5 +12,5 @@
     - if user_signed_in?
       = render 'message_form'
     - else
-      %p
-        Log in to ask #{advertise.user.name} a question about that advertise.
+      %p.center.log-in-mail-message
+        = link_to "Log in to ask #{advertise.user.name} a question about that advertise.", new_user_session_path
