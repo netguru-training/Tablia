@@ -13,6 +13,8 @@
             = content_tag( :i, '', class: "fa #{category.icon_class}" )
 - if current_user.try(:admin?)
   .row
-    .col-md-6.col-md-offset-3
-      %button.btn.btn-default.btn-block{type: "button"}
-        = link_to "New", new_category_path
+    .col-md-2
+      .title
+        = link_to "New", new_category_path, class: "button btn btn-default btn-block"
+- categories.each do |category|
+  = link_to category.name, category_path(category)
