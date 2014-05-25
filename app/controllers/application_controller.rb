@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   expose(:categories) { Category.all }
+  expose_decorated(:sponsored_advertises, decorator: AdvertiseDecorator) { Advertise.all.select(&:sponsored?).sample(3) }
 
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy

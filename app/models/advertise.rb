@@ -8,7 +8,7 @@ class Advertise
 
   field :title, type: String
   field :body, type: String
-
+  field :sponsored, type: Boolean, default: false 
 
   belongs_to  :user
   belongs_to  :category
