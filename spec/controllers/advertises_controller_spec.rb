@@ -24,7 +24,7 @@ describe AdvertisesController do
 
       it 'should change title of advertise' do
         patch :update, id: advertise_one.id, advertise: advertise_one.attributes
-        controller.advertise.title.should eq 'Changed title'
+        expect(controller.advertise.title).to eq('Changed title')
       end
     end
 
@@ -53,18 +53,18 @@ describe AdvertisesController do
     # is there any need to test other actions if they use same before_action?
   end
 
-  context 'for both' do
+  context 'for both signed in and unsigned' do
     describe 'GET index' do
       it "exposes all advertises from all users" do
         get :index
-        controller.advertises.count eq 2
+        expect(controller.advertises.count).to eq(2)
       end
     end
 
     describe 'GET show' do
       it "exposes exact advertise" do
         get :show, id: advertise_one.id
-        controller.advertise.should eq advertise_one
+        expect(controller.advertise).to eq(advertise_one)
       end
     end
   end
