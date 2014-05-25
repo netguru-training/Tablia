@@ -9,25 +9,43 @@ describe CategoriesController do
   let!(:advertise_two) { create(:advertise, user: user, category: category_two) }
 
   context 'for signed in users' do
-    before do
-      request.env['warden'].stub authenticate!: user
-      controller.stub current_user: user
-    end
+    context 'that is admin' do
+      before do
+        user.admin = true
+        user.save!
+        request.env['warden'].stub authenticate!: user
+        controller.stub current_user: user
+      end
 
-    describe 'POST create' do
-      let!(:temporary_category) { FactoryGirl.build(:category) }
-      
-      it 'should create new category' do
-        expect { post :create, category: temporary_category.attributes }.to change(Category, :count).by(1)
+      describe 'POST create' do
+        let!(:temporary_category) { FactoryGirl.build(:category) }
+        
+        it 'should create new category' do
+          expect { post :create, category: temporary_category.attributes }.to change(Category, :count).by(1)
+        end
+      end
+
+      describe 'PATCH update' do
+        before { category_one.name = 'Changed title' }
+
+        it 'should change title of category' do
+          patch :update, id: category_one.id, category: category_one.attributes
+          expect(controller.category.name).to eq('Changed title')
+        end
       end
     end
 
-    describe 'PATCH update' do
-      before { category_one.name = 'Changed title' }
+    context 'that is not admin' do
+      before do
+        request.env['warden'].stub authenticate!: user
+        controller.stub current_user: user
+      end
 
-      it 'should change title of category' do
-        patch :update, id: category_one.id, category: category_one.attributes
-        expect(controller.category.name).to eq('Changed title')
+      describe 'GET new' do
+        it 'redirects to root_path' do
+          get :new
+          controller.should redirect_to(root_path)
+        end
       end
     end
   end

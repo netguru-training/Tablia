@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   expose(:category, attributes: :category_params)
 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def new
 
@@ -37,6 +38,10 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name, :icon_class)
+  end
+
+  def authenticate_admin
+    redirect_to root_path unless current_user.admin?
   end
 
 end
