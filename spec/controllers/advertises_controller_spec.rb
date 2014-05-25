@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe AdvertisesController do
   let!(:user) { create(:user) }
-  let!(:advertise_one) { create(:advertise, user: user) }
-  let!(:advertise_two) { create(:advertise, user: user) }
+  let!(:category) { create(:category) }
+  let!(:advertise_one) { create(:advertise, user: user, category: category) }
+  let!(:advertise_two) { create(:advertise, user: user, category: category) }
 
   context 'for signed in user' do
     before do
