@@ -1,11 +1,13 @@
-= render advertise
+.row
+  .col-md-12
+    .col-md-12
+      = render advertise
 .row
   .col-md-12
     - if owner_of_the_advertise?
       .title
         = link_to 'Edit', edit_advertise_path(advertise), class: "button btn btn-default"
         = link_to 'Delete', advertise_path(advertise), method: :delete, class: "button btn btn-default"
-
 .row
   .col-md-12
     - if user_signed_in?

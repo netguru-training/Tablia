@@ -1,9 +1,19 @@
 .row
-  = link_to advertise.title, advertise_path(advertise)
-  .small
-    = 123
-.row.well
-  .col-md-4
-    = image_tag advertise.photo.url(:medium), class: 'img-thumbnail'
-  .col-md-8.well
-    = advertise.body
+  .col-md-12.well
+    .row
+      .col-md-12
+        .title
+          .small
+            = link_to advertise.title, advertise_path(advertise)
+            %br
+              %strong
+                Category:
+              = category_name
+            = advertise.created_at
+    .row
+      .col-md-12
+        .row
+          .col-md-2
+            = image_tag advertise.photo.url(:medium), class: 'img-thumbnail'
+          .col-md-10.well
+            = advertise.body

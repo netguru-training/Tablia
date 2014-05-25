@@ -3,6 +3,7 @@ class AdvertisesController < ApplicationController
   expose_decorated(:advertise, attributes: :advertise_params)
   expose(:search) { search_results }
   expose(:category_id) {advertise.category.present? ? advertise.category.id : nil}
+  expose(:category_name) {advertise.category.present? ? advertise.category.name : nil}
 
   before_action :owner_of_the_advertise, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :send_email_to_user]
@@ -32,7 +33,7 @@ class AdvertisesController < ApplicationController
 
   def update
     if advertise.save
-      render action: :index
+      redirect_to advertise_path(advertise)
     else
       render :new
     end
