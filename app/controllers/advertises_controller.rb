@@ -2,6 +2,7 @@ class AdvertisesController < ApplicationController
   expose(:advertises) { AdvertiseSearch.new(search).results }
   expose(:advertise, attributes: :advertise_params)
   expose(:search) { search_results }
+  expose(:category_id) {advertise.category.present? ? advertise.category.id : nil}
   
   before_action :owner_of_the_advertise, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :send_email_to_user]
@@ -69,7 +70,7 @@ class AdvertisesController < ApplicationController
     end
 
     def advertise_params
-      params.require(:advertise).permit(:title, :body, :photo)
+      params.require(:advertise).permit(:title, :body, :photo, :category_id)
     end
 
     def owner_of_the_advertise

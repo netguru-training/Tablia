@@ -30,6 +30,7 @@ gem 'searchlight'
 
 gem 'carrierwave'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem 'chosen-rails'
 
 gem 'devise'
 gem 'devise-async'
