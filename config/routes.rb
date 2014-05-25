@@ -21,7 +21,12 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :users
-  resources :advertises
+  resources :advertises do
+    member do
+      post :send_email_to_user
+    end
+  end
+
 
   # Example resource route with options:
   #   resources :products do

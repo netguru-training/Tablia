@@ -47,12 +47,18 @@ class AdvertisesController < ApplicationController
   end
 
   def send_email_to_user
+    advertise = Advertise.find params[:id]
     user = advertise.user
-    MessageMailer.send_message_to_user_about_ad(user, advertise)
+    binding.pry
+    MessageMailer.send_message_to_user_about_ad(user, advertise, current_user, message_params[:body]).deliver
     redirect_to advertise
   end
 
   private
+
+    def message_params
+      params.require(:email_hash).permit(:body)
+    end
 
     def advertise_params
       params.require(:advertise).permit(:title, :body, :photo)
