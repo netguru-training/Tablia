@@ -31,7 +31,7 @@ class Advertise
   }
 
   scope :by_phrase, -> (text) {
-    where(body: /%{text}/)
+    any_of({ :body => Regexp.new(".*#{text}.*") })
   }
 
 end

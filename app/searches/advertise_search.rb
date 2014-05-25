@@ -13,6 +13,6 @@ class AdvertiseSearch < Searchlight::Search
   end
 
   def search_by_phrase
-    search.by_phrase(phrase)
+    search.by_phrase(title)
   end
 end
